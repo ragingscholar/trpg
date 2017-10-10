@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>
+      
+        骰子君说明文档 - 长毛象跑团机器人说明文档
+      
+    </title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/assets/css/normalize.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <div class="container">
+      <header role="banner">
+        <div class="wrap">
+          
+          <h1 class="site-title"><a class="title-link" href="/">长毛象跑团机器人说明文档</a></h1>
+        </div>
+      </header>
+
+      <div class="wrap content">
+
+        <aside>
+  <p class="intro">长毛象跑团机器人说明文档</p>
+  <a class="skip-link visuallyhidden focusable" href="#main">Skip to Main Content</a>
+  <nav class="sidebar-nav" role="navigation">
+    <ul>
+      
+        
+          <li><a href="/./">主页</a></li>
+        
+      
+        
+          <li><a href="/mastodon/">什么是长毛象</a></li>
+        
+      
+        
+          <li><a href="/dicebot/">骰子君文档</a></li>
+        
+      
+        
+          <li><a href="/trpgbot/">跑团君文档</a></li>
+        
+      
+    </ul>
+  </nav>
+</aside>
+
+        <section id="main" class="main-content" role="main">
+          <h2 class="page-title">骰子君说明文档</h2>
+
+<h1 id="section">欢迎使用长毛象骰子君</h1>
+
+<h2 id="section-1">如何召唤骰子君</h2>
+<p>如果你是<a href="https://cmx.im">长毛象中文站</a>的用户，请直接 @dicebot</p>
+
+<p>跨站用户请 @dicebot@cmx.im</p>
+
+<h2 id="section-2">关于隐私设置</h2>
+<p>召唤骰子君可以使用任何隐私模式：私信、公开、不公开、仅粉丝。</p>
+
+<p>无论你选择用什么方式召唤，骰子君都会尝试用相同的隐私模式回复你。比如发私信给骰子君会收到骰子君回复的私信。</p>
+
+<p>另外请注意召唤骰子君的嘟文 @ 了哪些用户，骰子君在回复时会将这些用户也都 @ 到。所以即使你使用了私信模式，如果你在召唤骰子君时 @ 了其他用户，那么该用户也能收到骰子君回复的投掷结果。</p>
+
+<p>暗投属于例外情况。即使你在发送暗投命令时 @ 了其他用户，他们也只会看到 <strong>某某用户偷偷投了一把骰子</strong>，而骰子君会将投掷结果单独私信给你。</p>
+
+<h2 id="section-3">使用延迟</h2>
+<p>骰子君运行周期为10秒，这意味着你在发送了投掷命令后骰子君最多会在10秒内回复你。</p>
+
+<p>如果超过10秒没有收到结果或者任何错误信息，并且检查命令没有问题的情况下，请联系管理员获得帮助。</p>
+
+<h2 id="section-4">普通投掷</h2>
+<p>命令： @dicebot r [表达式] [投掷说明(可选)] [投掷角色(可选)]</p>
+
+<p>表达式包含骰子数量以及骰子面数。格式为 [+-]xDy，其中x为1-9的整数，y为1-999的整数。</p>
+
+<p><strong>r 1d100</strong>  <em>投掷一颗100面的骰子</em></p>
+
+<p><strong>r 2d50</strong> <em>投掷两颗50面的骰子并将结果相加</em></p>
+
+<p>注意，当骰子数量为1时，可以略去不写。比如 <strong>r 1d100</strong> 与 <strong>r d100</strong> 等效。</p>
+
+<h2 id="section-5">连锁投掷</h2>
+<p>命令： @dicebot r [表达式1][运算符][表达式2][运算符][常量] [投掷说明(可选)] [投掷角色(可选)]</p>
+
+<p>表达式可以用运算符连接在一起以进行复杂的投点计算。请注意最大只能连接两个表达式及一个常量修正量。</p>
+
+<p><strong>r 5d100-30</strong>  <em>投掷5颗100面的骰子并将结果减去30</em></p>
+
+<p><strong>r 3d10+1d50</strong> <em>投掷3颗10面的骰子并加上投掷一个50面的骰子的结果</em></p>
+
+<p><strong>r 3d100-1d50-30</strong> <em>投掷3颗100面的骰子，减去投掷1颗50面的骰子的结果，再减去30</em></p>
+
+<p>注意：运算符目前只支持+、-，连接表达式中请不要包含空格。</p>
+
+<h2 id="section-6">多次投掷</h2>
+<p>命令： @dicebot r [次数]#[表达式1][运算符][表达式2][运算符][常量] [投掷说明(可选)] [投掷角色(可选)]</p>
+
+<p>可以通过指定投掷次数来实现相同表达式的多次投掷。请注意最大可以连续投9次。</p>
+
+<p><strong>r 3#d100</strong> <em>连续投掷三次100面骰子。 结果示例 {18， 33， 93}</em></p>
+
+<p><strong>r 2#d100+d50-10</strong> <em>将投掷一颗100面骰子，加上投掷一颗50面骰子并减去10连续进行2次。 结果示例 {21, 93}</em></p>
+
+<h2 id="section-7">隐藏投掷</h2>
+<p>命令： @dicebot rh [任意投掷表达式]</p>
+
+<p>无论暗投者使用了什么样的隐私设置发送命令给骰子君，也无论暗投者在发送命令时是否 @ 了其他用户，<strong>投掷结果都是仅暗投者自己可见</strong>。</p>
+
+<p>使用该命令后骰子君会给暗投人单独发一条包含结果的私信。任何其他用户都仅会看到 <strong>某某用户偷偷投了一把骰子</strong> 的说明。</p>
+
+<p><strong>rh 2d100-30</strong></p>
+
+<p><strong>rh 3#d100-d50</strong></p>
+
+<p><strong>rh 2#5d100-3d6-100</strong></p>
+
+<p>均为有效命令。</p>
+
+<h2 id="section-8">关于投掷说明及投掷角色</h2>
+<p>所有上述命令都可以在末尾附上投掷说明和/或投掷角色名。</p>
+
+<p>这两个参数都为可选，未指定情况下投掷说明为空，投掷角色名为该用户在长毛象上的显示名称。</p>
+
+<p><strong>r d100</strong> <em>返回： 海格尼尼 投掷 ： d100 = 48</em></p>
+
+<p><strong>r d100 要不要睡觉呢 夜之精灵</strong> <em>返回：夜之精灵 投掷 要不要睡觉呢： d100 = 100</em></p>
+
+<p><strong>r 2#3d6+d10-30 来自狂暴修仙者的双持攻击 荆棘之肺</strong> <em>返回： 荆棘之肺 投掷 来自狂暴修仙者的双持攻击 : 2#3d6+d10-30 = 2次 { -17 -15}</em></p>
+
+<p>注意： 玩家可以通过临时修改自己长毛象账号的显示名称来省去每次投点指定角色名的步骤。</p>
+
+
+        </section>
+
+      </div><!-- /.wrap content -->
+
+      <footer role="contentinfo">
+        <div class="wrap">
+          <p>该项目由 <a href="https://cmx.im/@haisenberg">海格尼尼</a> 维护。</p>
+
+          <p>服务器及带宽由 <a href="https://cmx.im/">长毛象中文站</a> 提供。</p>
+        </div><!--/.wrap -->
+      </footer>
+    </div> <!-- /.container -->
+    
+    </body>
+</html>
